@@ -385,6 +385,18 @@ if(params$params_list$timePlots == T){
               y_lab <- ''
             }
             
+            if(params$params_list$includeDay == T){
+              these_xlims <- c(as.POSIXct(paste(this_survey_date, '12:00:00')), 
+                               as.POSIXct(paste((this_survey_date+1), '11:59:59'))
+              )
+            }else{
+              these_xlims <- 
+                c(
+                    sun_toplot$datetime_start[1]-60*120,
+                    sun_toplot$datetime_end[1]+60*120
+                  )
+            }
+            
             tp <-
               ggplot()+
               # civil twilight
@@ -418,11 +430,7 @@ if(params$params_list$timePlots == T){
               )+
               scale_x_datetime(
                 '',
-                limits =
-                  c(
-                    sun_toplot$datetime_start[1]-60*120,
-                    sun_toplot$datetime_end[1]+60*120
-                  ),
+                limits = these_xlims,
                 date_breaks = '2 hour',date_labels = '%H:%M'
               )+
               coord_cartesian(
@@ -461,6 +469,18 @@ if(params$params_list$timePlots == T){
               y_lab <- ''
             }
             col<-'white'
+            
+            if(params$params_list$includeDay == T){
+              these_xlims <- c(as.POSIXct(paste(as.Date(sun_toplot$datetime_start[1]), '12:00:00')), 
+                               as.POSIXct(paste((as.Date(sun_toplot$datetime_end[1])), '11:59:59'))
+              )
+            }else{
+              these_xlims <- 
+                c(
+                    sun_toplot$datetime_start[1]-60*120,
+                    sun_toplot$datetime_end[1]+60*120
+                  )
+            }
             
             sp_list[[count+1]] <-
               ggplot()+

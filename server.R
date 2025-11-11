@@ -214,7 +214,7 @@ function(input, output, session) {
   
   selectedSpGroups <- reactive({
     if(length(input$selectedSpGroups) == 0L){
-      return(sapply(c('Bats', 'Small Mammals','Bush-Crickets', 'Moths', 'Birds'), function(x){return(substr(tolower(x), 1, nchar(x)-1))}))
+      return(sapply(c('Bats', 'Terrestrial Mammals','Bush-Crickets', 'Moths', 'Birds'), function(x){return(substr(tolower(x), 1, nchar(x)-1))}))
     }else{
       return(sapply(input$selectedSpGroups, function(x){return(substr(tolower(x), 1, nchar(x)-1))}))
     }
@@ -238,6 +238,7 @@ function(input, output, session) {
                 selectedColumns = selectedColumns(),
                 timePlots = input$timePlots,
                 selectedNightPhases = input$selectedNightPhases,
+                includeDay = input$includeDay,
                 emptyDays = input$emptyDays,
                 horizontalGridTime = input$horizontalGridTime,
                 timeBreaks = input$timeBreaks,

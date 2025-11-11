@@ -76,8 +76,8 @@ fluidPage(
             inputId = 'selectedSpGroups', 
             label = 'Select which species groups to include',
             multiple = T,
-            choices = c('Bats', 'Small Mammals','Bush-Crickets', 'Moths', 'Birds'),
-            selected = c('Bats', 'Small Mammals','Bush-Crickets', 'Moths', 'Birds'),
+            choices = c('Bats', 'Terrestrial Mammals','Bush-Crickets', 'Moths', 'Birds'),
+            selected = c('Bats', 'Terrestrial Mammals','Bush-Crickets', 'Moths', 'Birds'),
             width = "100%",
             options = list(`actions-box` = TRUE, noneSelectedText = 'No groups selected - all will be included')
           ),
@@ -147,6 +147,12 @@ fluidPage(
             label = strong('Include nights with no records for a species'),
             width = "100%",
             value = T
+          ),
+          materialSwitch(
+            inputId = 'includeDay',
+            label = strong('Include daylight periods in plots'),
+            width = "100%",
+            value = F
           ),
           materialSwitch(
             inputId = 'horizontalGridTime',
